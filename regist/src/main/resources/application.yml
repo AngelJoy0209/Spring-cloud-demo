@@ -1,0 +1,16 @@
+server:
+  port: 8080 #当前应用端口
+spring:
+  application:
+    name: eureka-registry #应用名称
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8080/eureka/ #Eureka Server地址
+    register-with-eureka:
+      false #因为自己是注册中心，所以不注册自己
+    fetch-registry:
+      false
+  instance:
+    metadataMap:
+      instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
