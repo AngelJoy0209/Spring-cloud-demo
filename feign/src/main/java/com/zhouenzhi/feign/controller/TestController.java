@@ -36,4 +36,20 @@ public class TestController {
 		Map<String,String> map = restTemplate.getForObject(uri, Map.class);
 		return map;
 	}
+	
+	/**
+	 * 这是一个说明
+	 * @param map
+	 * @return
+	 */
+	@GetMapping(value="/redis")
+	@ResponseBody
+	public Map<String,String> redisTest() {
+		
+		ServiceInstance instance = balancerClient.choose("eureka.server");
+		String url = instance.getUri().toString()+"/test/redis";
+		URI uri = URI.create(url);
+		Map<String,String> map = restTemplate.getForObject(uri, Map.class);
+		return map;
+	}
 }
