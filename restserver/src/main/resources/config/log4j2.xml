@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+	<!-- 配置日志输出目录 -->
+	<!-- <Properties>
+		<Propertie name="LOG_HOME">/</Propertie>
+	</Properties> -->
+	
+	<Appenders>
+		<!-- 输出控制台配置 -->
+		<Console name="Console" target="SYSTEM_OUT">
+			<!-- 输出日志格式 -->
+			<PatternLayout pattern="[%t] [%d{yyyy-MM-dd HH:mm:ss,SSS} %-5p] %C{1} - %m%n"/>
+		</Console>
+		
+		<!-- 设置输出日志保存文件 -->
+		<!-- <RollingRandomAccessFile name="service_appender" immediateFlush="true" fileName="${LOG_HOME}/service.log" filePattern="${LOG_HOME}/service.log.%d{yyyy-MM-dd}.log.gz">
+			<PatternLayout pattern="[%t] [%d{yyyy-MM-dd HH:mm:ss,SSS} %-5p] %C{1} - %m%n"/>
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+			</Policies>
+		</RollingRandomAccessFile> -->
+		
+		<!-- <RollingFile name="RollingFile" fileName="logs/app.log" filePattern="log/$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log.gz">
+            <PatternLayout pattern="%d{yyyy-MM-dd 'at' HH:mm:ss z} %-5level %class{36} %L %M - %msg%xEx%n"/>
+            <SizeBasedTriggeringPolicy size="50MB"/>
+            <DefaultRolloverStrategy max="20"/>
+        </RollingFile> -->
+	</Appenders>
+	
+	<Loggers>
+		<root level="info">
+			<appender-ref ref="Console"/>
+			<!-- <appender-ref ref="RollingFile"/> -->
+		</root>
+		
+		<Logger name="org.apache.catalina.startup.DigesterFactory" level="error" />
+		<Logger name="org.apache.catalina.util.LifecycleBase" level="error" />
+		<Logger name="org.apache.coyote.http11.Http11NioProtocol" level="warn" />
+		<logger name="org.apache.sshd.common.util.SecurityUtils" level="warn"/>
+		<Logger name="org.apache.tomcat.util.net.NioSelectorPool" level="warn" />
+		<Logger name="org.crsh.plugin" level="warn" />
+		<logger name="org.crsh.ssh" level="warn"/>
+		<Logger name="org.eclipse.jetty.util.component.AbstractLifeCycle" level="error" />
+		<Logger name="org.hibernate.validator.internal.util.Version" level="warn" />
+		<logger name="org.springframework.boot.actuate.autoconfigure.CrshAutoConfiguration" level="warn"/>
+		<logger name="org.springframework.boot.actuate.endpoint.jmx" level="warn"/>
+		<logger name="org.hibernate.engine.internal.StatisticalLoggingSessionEventListener" level="error"/>
+		<logger name="org.thymeleaf" level="warn"/>
+		<logger name="comp.env" level="info"/>
+		
+		<!-- <logger name="service_log" level="debug" includeLocation="true" additivity="true">
+			<appender-ref ref="service_appender"/>
+		</logger> -->
+	</Loggers>
+</Configuration>

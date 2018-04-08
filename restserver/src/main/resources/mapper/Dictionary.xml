@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zhouenzhi.restserver.mapper.DictionaryMapper" >
+
+    <select id="getDictionaryList" resultType="com.zhouenzhi.restserver.entity.Dictionary">
+        select * from dictionary limit 0,10
+    </select>
+
+</mapper>

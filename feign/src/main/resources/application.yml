@@ -1,0 +1,12 @@
+
+server:
+  port: 8070
+spring:
+  application:
+    name: eureka.test
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8080/eureka/
+  instance:
+    appname: eureka.test.01

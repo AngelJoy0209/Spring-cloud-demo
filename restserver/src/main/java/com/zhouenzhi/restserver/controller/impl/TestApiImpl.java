@@ -1,6 +1,7 @@
 package com.zhouenzhi.restserver.controller.impl;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.zhouenzhi.restserver.controller.TestApi;
+import com.zhouenzhi.restserver.entity.Dictionary;
+import com.zhouenzhi.restserver.service.DictionaryService;
 import com.zhouenzhi.restserver.service.RedisService;
 
 @Controller
@@ -16,6 +19,8 @@ public class TestApiImpl implements TestApi {
 	
 	@Autowired
     private RedisService redisService;
+	@Autowired
+    private DictionaryService dictionaryService;
 
 	@ResponseBody
 	public Map<String,String> testHello(@PathVariable("name") String name) {
@@ -42,6 +47,15 @@ public class TestApiImpl implements TestApi {
         Map<String,String> map = new HashMap<String,String>();
         map.put("123", sb.toString());
         return map;
+	}
+
+	@Override
+	@ResponseBody
+	public Map<String, Object> testMySql() {
+		Map<String,Object> map = new HashMap<String,Object>();
+		List<Dictionary> dictionaryList = dictionaryService.getDictionaryList();
+		map.put("dictionary", dictionaryList);
+		return map;
 	}
 
 }

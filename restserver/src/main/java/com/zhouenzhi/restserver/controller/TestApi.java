@@ -13,4 +13,7 @@ public interface TestApi {
 	
 	@RequestMapping(value="/test/redis",method=RequestMethod.GET)
 	public Map<String,String> testRedis();
+	
+	@RequestMapping(value="/test/mysql",method=RequestMethod.GET)
+	public Map<String,Object> testMySql();
 }

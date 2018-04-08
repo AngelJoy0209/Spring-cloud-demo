@@ -52,4 +52,20 @@ public class TestController {
 		Map<String,String> map = restTemplate.getForObject(uri, Map.class);
 		return map;
 	}
+	
+	/**
+	 * 这是一个说明
+	 * @param map
+	 * @return
+	 */
+	@GetMapping(value="/mysql")
+	@ResponseBody
+	public Map<String,Object> mysqlTest() {
+		
+		ServiceInstance instance = balancerClient.choose("eureka.server");
+		String url = instance.getUri().toString()+"/test/mysql";
+		URI uri = URI.create(url);
+		Map<String,Object> map = restTemplate.getForObject(uri, Map.class);
+		return map;
+	}
 }
